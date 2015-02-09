@@ -7,5 +7,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^musicool/', include('musicool.urls'))
+    url(r'^musicool/', include('musicool.urls')),
+    (r'^accounts/', include('registration.backends.simple.urls')),
+    (r'^password/', include('registration.backends.simple.urls'))
 )

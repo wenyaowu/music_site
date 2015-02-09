@@ -1,3 +1,36 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+class Album(models.Model):
+    name = models.CharField(max_length=128)
+    artist = models.CharField(max_length=128)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Playlist(models.Model):
+    title = models.CharField(max_length=128)
+    user = models.ForeignKey(User)  # Playlist created by
+
+    def __unicode__(self):
+        return self.title
+
+
+class Track(models.Model):
+    name = models.CharField(max_length=128)
+    artist = models.CharField(max_length=128)
+    source = models.CharField(max_length=128)  # Specify the source of the track(ie, Spotify, SC...)
+    album = models.ForeignKey(Album)
+    playlists = models.ManyToManyField(Playlist)
+
+    def __unicode__(self):
+        return self.name
+
+
+class UserMusic(models.Model): # This model store user's music
+    user = models.OneToOneField(User)
+
+    def __unicode__(self):
+        return self.user.username

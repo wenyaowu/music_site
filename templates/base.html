@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>MusiCool - {% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -24,11 +24,13 @@
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
+
+<body>
+
     <div class="navbar-wrapper">
       <div class="container">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -37,13 +39,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{% url 'index' %}">MusiCool</a>
+              <a class="navbar-brand" href="{% url 'index' %}"><strong>MusiCOOL</strong></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="">Search</a></li>
                 <li class="dropdown">
                   <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Other <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -57,6 +59,15 @@
                   </ul>
                 </li>
               </ul>
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><h4>Hi, {{ user.username }}</h4></li>
+                <li><a href="{% url 'auth_logout' %}?next=/musicool/">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'registration_register' %}">Register</a></li>
+                <li><a href="{% url 'auth_login' %}">Login</a></li>
+                {% endif %}
+              </ul>
             </div>
           </div>
         </nav>
@@ -64,16 +75,16 @@
       </div>
     </div>
 
-    <!--Body Block-->
+
+
+    <div><!--Body Block-->
     {% block body %}
     {% endblock %}
+    </div>
+
 
     <div class="container marketing">
       <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="">Back to top</a></p>
-        <p>© 2014 Company, Inc. · <a href="">Privacy</a> · <a href="">Terms</a></p>
-      </footer>
 
     </div><!-- /.container -->
 
@@ -85,4 +96,6 @@
     <script src="/static/bootstrap-3.3.2/js/bootstrap.min.js"></script>
   
 
-<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" title="" data-original-title="Copy to clipboard">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1423437505679">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1423437505679" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">                </object></div><svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs></defs><text x="0" y="23" style="font-weight:bold;font-size:23pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">500x500</text></svg></body></html>
+<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" title="" data-original-title="Copy to clipboard">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1423437505679">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1423437505679" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">                </object></div><svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs></defs><text x="0" y="23" style="font-weight:bold;font-size:23pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">500x500</text></svg>
+</body>
+</html>
