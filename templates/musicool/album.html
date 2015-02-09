@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+   <!--Left bar(album info)-->
+   <div class="col-sm-5 col-md-5">
+    <div><!--Album info-->
+          <a href="/musicool/album/{{ album.id }}"><p class="text-center"><img class="img-thumbnail" src="{{ album.image }}" alt="Generic placeholder image" style="width: 300px; height: 300px;"></p></a>
+          <h3 class="text-center">{{ album.name }}</h3>
+          <p class="text-center">{{ album.artist }}</p>
+    </div><!--Album info-->
+    <div class="panel panel-default"><!--Tracks-->
+        <div class="panel-heading"><h4 class="panel-title text-center">Tracks</h4></div>
+        <div class="panel-body">
+        <ul class="list-group">
+        {% if tracks %}
+           {% for track in tracks %}
+               <li class="list-group-item text-center">{{ track.name }}</li>
+           {% endfor %}
+       </ul>
+       {% else %}
+       <h4>There are no tracks to present.</h4>
+       {% endif %}
+        </div>
+    </div><!--Tracks-->
+   </div><!--left bar-->
+
+
+
+
+   <!--right bar(comment)-->
+   <div class="col-sm-7">
+   <div class="panel panel-default"> <!--comment panel-->
+        <div class="panel-heading"><h4 class="panel-title text-center">Comment</h4></div>
+        <div class="panel-body"><p>This is where comments go.</p></div>
+    </div><!--comment-->
+
+    <form class="form-horizontal">
+    <div class="form-group"><!--New Comment-->
+        <label for="commentInput"><h4>New Comment</h4></label>
+        <textarea class="form-control" rows="4" id="commentInput" placeholder="Please write you comment here"></textarea>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div><!--New Comment-->
+    </form>
+   </div><!--right bar-->
+
+{% endblock %}
