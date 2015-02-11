@@ -45,7 +45,20 @@ def spotify_login(request):
 
     if token: # Check if user gets token
         sp = spotipy.Spotify(auth=token)
-        user = sp.current_user()
-        print user['id']
+        #user = sp.current_user()
+        #print user['id']
 
     return redirect('/musicool/')
+
+def search_spotify(request):
+
+    result_list=[]
+    context_dict={}
+
+    if request.method == 'POST':
+        query = request.POST['query']
+        if query:
+            search_spotify_helper(query)
+
+    context_dict['result_list']=result_list
+    return render(request, 'musicool/search_spotify.html', context_dict)

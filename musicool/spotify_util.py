@@ -3,7 +3,7 @@ import os
 import subprocess
 from spotipy import oauth2
 import spotipy
-
+import pprint
 
 def prompt_user_login(username=''):
 
@@ -54,3 +54,10 @@ def exchange_token_with_code(code=None, username=''):
                 return None
         else:
             print 'Something wrong!'
+
+
+def search_spotify_helper(search_str=''):
+
+    sp = spotipy.Spotify()
+    result = sp.search(search_str)
+    pprint.pprint(result)

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+        <form class="form-inline" method="post" action="{% url 'search_spotify' %}">
+            {% csrf_token %}
+            <input class="form-control" type="text" size="50" name="query" value="" id="query" placeholder="Search here!" />
+            <input class="btn btn-default" type="submit" name="submit" value="Search">
+            <br/>
+        </form>
+    </div>
+
+
+{% endblock %}

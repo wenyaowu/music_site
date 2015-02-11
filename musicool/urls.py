@@ -8,5 +8,5 @@ urlpatterns = patterns('',
                        url(r'^album/(?P<album_id>[\w]+)/$', views.album, name='category'),
                        url(r'^spotify_ask_authorized/$', views.spotify_ask_authorized, name='spotify_ask_authorized'),
                        url(r'^spotify_login/', views.spotify_login, name='spotify_login'),
-
+                       url(r'search_spotify', views.search_spotify, name='search_spotify')
                        )
