@@ -25,11 +25,10 @@ class Playlist(models.Model):
 
 class Track(models.Model):
     name = models.CharField(max_length=128)
-    artist = models.CharField(max_length=128)
-    source = models.CharField(max_length=128)  # Specify the source of the track(ie, Spotify, SC...)
+    source = models.CharField(max_length=128, default='Spotify')  # Specify the source of the track(ie, Spotify, SC...)
     album = models.ForeignKey(Album)
-    previewURL = models.URLField()
-    playlists = models.ManyToManyField(Playlist)
+    previewURL = models.URLField(blank=True)
+    playlists = models.ManyToManyField(Playlist, blank=True)
     type = models.CharField(default='track', max_length=128)
 
     def __unicode__(self):
