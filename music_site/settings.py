@@ -71,6 +71,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'musicool',
     'registration',
+    'social.apps.django_app.default', # Database/ Table for social network-authentication
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +83,26 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
 
 ROOT_URLCONF = 'music_site.urls'
 
@@ -111,3 +132,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+SOCIAL_AUTH_FACEBOOK_KEY = '513721602098910'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f359722c3319c2a5f4da349096529fde'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '984819579275-o2760q7gfosbii6lpcbnqbuhplpfo7jj.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Y7ggWsHe6rKRpzi4kret1v4R'
+SOCIAL_AUTH_GOOGLE_OAUTH2_USE_DEPRECATED_API = True
+SOCIAL_AUTH_GOOGLE_PLUS_USE_DEPRECATED_API = True

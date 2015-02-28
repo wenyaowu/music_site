@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponse, render_to_response
+from django.template import RequestContext
 from models import *
 import spotipy
 from spotify_util import *
@@ -62,3 +63,13 @@ def search_spotify(request):
 
     context_dict['result_list']=result_list
     return render(request, 'musicool/search_spotify.html', context_dict)
+
+
+def socialauth(request):
+
+    context_dict = {'user':request.user, 'request':request}
+
+    return render(request, 'musicool/socialauth.html', context_dict)
+
+def complete_google_auth(request):
+    return redirect('/musicool/')
